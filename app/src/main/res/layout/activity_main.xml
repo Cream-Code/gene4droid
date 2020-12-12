@@ -1,19 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="match_parent"
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    title bar -->
+    <Toolbar
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="?attr/actionBarSize" >
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="12">
+<!--            logo icon   -->
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@mipmap/ic_launcher"
+                android:contentDescription="@string/logo"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1">
+            </ImageView>
+<!--            search bar using EditText -->
+            <EditText
+                android:autofillHints="@string/app_name"
+                android:inputType="textUri"
+                android:layout_height="40dp"
+                android:id="@+id/url"
+                tools:ignore="LabelFor,RtlSymmetry"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/round_corners"
+                android:paddingStart="5dp"
+                android:layout_weight="10"
+                android:layout_width="wrap_content">
+
+            </EditText>
+<!--            search icon-->
+            <ImageButton
+                android:id="@+id/search_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_search_24"
+                android:contentDescription="@string/search_button"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                >
+
+            </ImageButton>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </Toolbar>
+<!--    swipe refresh layout  -->
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/swipe">
+<!--        web-view to show browser output -->
         <WebView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/webView">
-
         </WebView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
 </LinearLayout>
